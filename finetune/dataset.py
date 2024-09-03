@@ -140,6 +140,7 @@ def conversation_to_ids(conversation, tokenizer, llm_type=None, new_schema=False
         input_ids, context, raw_msg = conversation_to_ids_minicpm(
             conversation, tokenizer
         )
+        input_ids = np.hstack(input_ids)
 
     ids = torch.from_numpy(np.hstack(input_ids, dtype=np.int32))
     context = torch.from_numpy(np.hstack(context, dtype=np.int8))
